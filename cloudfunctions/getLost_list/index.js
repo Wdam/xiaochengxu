@@ -10,8 +10,8 @@ exports.main = async (event, context) => {
 	const count = await db.collection('lost-and-found').count();
 	const total = count.total;
 	let limitNum = 10;
-	let start = total - (startNum+1) * 10
-	if(start<0){
+	let start = total - (startNum + 1) * 10
+	if (start < 0) {
 		start = 0;
 		limitNum = total - startNum * 10;
 	}

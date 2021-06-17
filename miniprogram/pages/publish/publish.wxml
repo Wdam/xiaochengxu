@@ -1,23 +1,31 @@
 <view class="wrapper">
-	<view bindtap="toPublish" class="old" data-type="0">
+	<!-- <view bindtap="toPublish" class="old" data-type="0">
 		<image src="cloud://dev-513b66.6465-dev-513b66/Carousel/air.jpg" />
 		<text>发布二手物品信息</text>
 		<view class="s_mask"></view>
-	</view>
+	</view> 
 
 
 	<view bindtap="toPublish" class="old" data-type="1">
 		<image src="cloud://dev-513b66.6465-dev-513b66/Carousel/timg.jpg" />
 		<text>发布二手书籍信息</text>
 		<view class="s_mask"></view>
-	</view>
+	</view> -->
 
 
 	<view bindtap="toPublish" class="old" data-type="2">
-		<image src="cloud://dev-513b66.6465-dev-513b66/Carousel/yishu.jpg" />
+		<image src="cloud://yougoudemo-0ge0k7sj9e6e9e97.796f-yougoudemo-0ge0k7sj9e6e9e97-1305003213/images/2AFC797484CBDA13F77A3BC3DEB_FF58E35C_7CE3.jpg" />
 		<text>发布失物招领信息</text>
 		<view class="s_mask"></view>
 	</view>
+
+		<view bindtap="toPublish" class="old" data-type="3">
+		<image src="cloud://yougoudemo-0ge0k7sj9e6e9e97.796f-yougoudemo-0ge0k7sj9e6e9e97-1305003213/images/CB4274526DFAE25752B3CE5FB02_D6474990_8D41.jpg" />
+		<text>发布拼购信息</text>
+		<view class="s_mask"></view>
+	</view>
+
+
 
 	<van-dialog id="van-dialog" />
 </view>

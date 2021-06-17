@@ -1,41 +1,124 @@
 {
-	"miniprogramRoot": "miniprogram/",
-	"cloudfunctionRoot": "cloudfunctions/",
-	"setting": {
-		"urlCheck": true,
-		"es6": true,
-		"postcss": true,
-		"minified": true,
-		"newFeature": true
-	},
-	"appid": "wxc60f5f3cf62491f9",
-	"projectname": "CDUT",
-	"libVersion": "2.2.5",
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"list": []
-		},
-		"miniprogram": {
-			"current": 0,
-			"list": [
-				{
-					"id": -1,
-					"name": "db guide",
-					"pathName": "pages/databaseGuide/databaseGuide"
-				}
-			]
-		}
-	}
+  "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "enableEngineNative": false,
+    "bundle": false,
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true
+  },
+  "appid": "wx2f95531f52f71e9d",
+  "projectname": "test",
+  "libVersion": "2.15.0",
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "db guide",
+          "pathName": "pages/databaseGuide/databaseGuide",
+          "query": ""
+        },
+        {
+          "name": "pages/public_group/public_group",
+          "pathName": "pages/public_group/public_group",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/publish_group/publish_group",
+          "pathName": "pages/publish_group/publish_group",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/test/test",
+          "pathName": "pages/test/test",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/goodsDetail/goodsDetail",
+          "pathName": "pages/goodsDetail/goodsDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/openid/openid",
+          "pathName": "pages/openid/openid",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/salesDetails/salesDetails",
+          "pathName": "pages/salesDetails/salesDetails",
+          "query": "id=b00064a760476a0a092bd89c0a0be324",
+          "scene": null
+        },
+        {
+          "name": "pages/paypage/paypage",
+          "pathName": "pages/paypage/paypage",
+          "query": "id=b00064a760476a0a092bd89c0a0be324",
+          "scene": null
+        },
+        {
+          "name": "pages/Score/score",
+          "pathName": "pages/Score/score",
+          "query": "openid=o5pq45DjUZDFfSAZQhtidavBUCBI",
+          "scene": null
+        },
+        {
+          "name": "pages/notespage/notespage",
+          "pathName": "pages/notespage/notespage",
+          "query": "titlt=这是公告2",
+          "scene": null
+        },
+        {
+          "name": "pages/shopcar/shopcar",
+          "pathName": "pages/shopcar/shopcar",
+          "scene": null
+        }
+      ]
+    }
+  }
 }

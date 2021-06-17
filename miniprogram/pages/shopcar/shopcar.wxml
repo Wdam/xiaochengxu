@@ -1,0 +1,38 @@
+  
+<view class="main">
+    <view wx:if="{{hasList}}">
+        <view class="cart-box">
+            <view class="cart-list" wx:for="{{goods_list}}" wx:key="{{index}}">
+                <icon wx:if="{{item.selected}}" type="success" color="red" data-index="{{index}}"  class="cart-pro-select" bindtap="selectList"/>
+                <icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" bindtap="selectList"/>
+                <image class="cart-thumb" src="{{item.pic_url}}"></image>
+                <text class="cart-pro-name">{{item.goodsname}}</text>
+                <text class="cart-pro-price">￥{{item.price}}</text>
+                <text class="topay" bind:tap="toPay" data-id="{{item._id}}"data-index ="{{index}}"data-num="{{item.num}}"data-openid="{{item.openid}}"></text>
+                  
+                <view class="cart-count-box">
+                    <text class="cart-count-down" bindtap="minusCount" data-obj="{{obj}}" data-index="{{index}}">-</text>
+                    <text class="cart-count-num">{{item.num}}</text>
+                    <text class="cart-count-add" bindtap="addCount" data-index="{{index}}">+</text>
+                </view>
+                <text class="cart-del" bindtap="deleteList" data-index="{{index}}">×</text>
+            </view>
+        </view>
+        <text wx:if="{{notes}}">您有商品存在满减，支付时请注意</text>
+        <view class="cart-footer">
+            <icon wx:if="{{selectAllStatus}}" type="success_circle" color="#fff" class="total-select" bindtap="selectAll"/>
+            <icon wx:else type="circle" color="#fff" class="total-select" bindtap="selectAll"/>
+            <!-- <view class="order-icon">
+                <navigator ><image src="../../images/icons/右.png" bind:tap="toPay" data-></image></navigator>
+            </view> -->
+            <text>全选</text>
+ 
+            <text class="cart-toatl-price">您应准备支付￥{{totalPrice}}</text>
+            
+              
+        </view>
+    </view>
+    <view wx:else>
+        <view class="cart-no-data">购物车是空的哦~</view>
+    </view>
+</view>

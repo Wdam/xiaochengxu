@@ -1,0 +1,28 @@
+<view >
+<view wx:for="{{qr_imgs}}">
+<image class="qrimg" src="{{item}}" mode="widthFix"  data-url="{{item}}" show-menu-by-longpress="true">  
+</image>
+</view>
+<view>
+	<text wx:if="{{discount !=null}}" >本商品有折扣{{discount}}，付款请注意</text> 
+	<text wx:else>请注意钱款安全</text>
+</view>
+  
+<text class="" >在此上传付款凭证,长按保存后扫描二维码付款</text>
+		<view class="pictures" >
+			<view wx:key="index" class="img_item" wx:for="{{tempFilePaths}}">
+				<image mode="aspectFit" src="{{item}}" />
+				<van-icon bind:click="deletePic" data-index="{{index}}" name="close" />
+			</view>
+
+			<view bindtap="chooseEvid" class="img_item upload-img">
+				<van-icon name="plus" />
+			</view>
+			
+		</view>
+		<view>
+			<input class="liuyan" name='liuyan' placeholder="请输入留言20字以内"  bind:input = "liuyanInput" maxlength="20"/>
+		</view>
+		  
+        <button bind:tap="Confirm" type="primary">确认上传凭证</button>
+</view>

@@ -1,0 +1,8 @@
+.main{
+   padding: 15rpx;
+   border-radius: 25rpx;
+   margin: 10rpx;
+   background: #D3D3D3;
+   box-shadow: 2px 2px 5px #000;
+
+}

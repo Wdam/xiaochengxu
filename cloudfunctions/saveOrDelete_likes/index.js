@@ -20,9 +20,9 @@ exports.main = async (event, context) => {
 		openid: openid
 	}).get();
 	let res;
-	if(isLike){
+	if (isLike) {
 		//添加喜欢的商品
-		if(!likes_goods.data.length){
+		if (!likes_goods.data.length) {
 			//第一次添加
 			res = await db.collection('likes-goods').add({
 				data: {
@@ -30,7 +30,7 @@ exports.main = async (event, context) => {
 					goods_arr: idArr
 				}
 			});
-		}else{
+		} else {
 			//非第一次直接更新数组
 			res = await db.collection('likes-goods').where({
 				openid: openid
@@ -41,34 +41,34 @@ exports.main = async (event, context) => {
 			});
 		}
 
-		await db.collection('goods').doc(goods_id).update({
-			data:{
+		await db.collection('goods_group').doc(goods_id).update({
+			data: {
 				likeNum: _.inc(1)
 			}
 		})
-		
-	}else{
+
+	} else {
 		//删除喜欢的商品
 		const likes_arr = likes_goods.data[0].goods_arr;
 		const index = likes_arr.indexOf(goods_id);
-		if(index !== -1){
+		if (index !== -1) {
 			const deleArr = likes_arr.splice(index, 1);
 			res = await db.collection('likes-goods').where({
 				openid: openid
 			}).update({
-				data:{
+				data: {
 					goods_arr: likes_arr
 				}
 			});
 		}
 
-		await db.collection('goods').doc(goods_id).update({
-			data:{
+		await db.collection('goods_group').doc(goods_id).update({
+			data: {
 				likeNum: _.inc(-1)
 			}
 		})
 	}
 
 	return res;
-	
+
 }

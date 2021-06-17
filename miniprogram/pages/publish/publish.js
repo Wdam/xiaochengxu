@@ -12,16 +12,21 @@ Page({
     toPublish(e){
         const { logged } = app.globalData;
         if(logged){
-            const {type} = e.currentTarget.dataset;
-            if(type == 2){
-                wx.navigateTo({
-                    url: '../publish_lost/publish_lost'
-                })
-            }else{
-                wx.navigateTo({
-                    url: `../publish_old/publish_old?pub_type=${type}`
-                })
-            }
+                const {type} = e.currentTarget.dataset;
+                if(type == 2){
+                    wx.navigateTo({
+                        url: '../publish_lost/publish_lost'
+                    })
+                }else if(type == 0 || type == 1){
+                    wx.navigateTo({
+                        url: `../publish_old/publish_old?pub_type=${type}`
+                    })
+                
+                }else if(type == 3){
+                    wx.navigateTo({
+                        url: '../publish_group/publish_group'
+                    })
+                }
         }else{
             Dialog.alert({
                 title: '未登录',

@@ -16,5 +16,5 @@ exports.main = async (event, context) => {
 	}).get();
 
 	return goods.data;
-  
+
 }

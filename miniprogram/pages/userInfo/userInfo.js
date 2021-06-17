@@ -10,7 +10,8 @@ Page({
         detailInfo: {},
         showLoading: false,
         showPopup: false,
-        columns: ['男', '女']
+        columns: ['男', '女'],
+
     },
 
     /**
@@ -18,11 +19,11 @@ Page({
     */
     onLoad: function (options) {
         this.setData({
-            showLoading:true
+            showLoading: true
         })
         const that = this;
         try {
-            const skey = wx.getStorageSync('skey');
+            const skey = wx.getStorageSync('skey'); //本地缓存
             if (skey) {
                 //获取用户详细信息
                 // 调用云函数
@@ -33,12 +34,12 @@ Page({
                     },
                     success: result => {
                         console.log(result.result.info);
-                        if(result.result.suc){
+                        if (result.result.suc) {
                             that.setData({
                                 avatarUrl: result.result.info.avatarUrl,
                                 detailInfo: result.result.info
                             })
-                        }else{
+                        } else {
                             console.log(result.result.info);
                         }
                         that.setData({
@@ -58,9 +59,9 @@ Page({
         }
     },
 
-    changeAvatar(){
+    changeAvatar() {
         const that = this;
-    // 选择图片
+        // 选择图片
         wx.chooseImage({
             count: 1,
             sizeType: ['compressed'],
@@ -83,8 +84,8 @@ Page({
         })
         const that = this;
         const arr = filePath.split('/');
-        const name = arr[arr.length-1];
-         // 上传图片
+        const name = arr[arr.length - 1];
+        // 上传图片
         const cloudPath = 'avatarUrl/' + name;
 
         wx.cloud.uploadFile({
@@ -99,7 +100,7 @@ Page({
         }).catch(error => {
             wx.hideLoading();
             console.error('[上传文件] 失败：', error);
-             wx.showToast({
+            wx.showToast({
                 icon: 'none',
                 title: '上传失败',
                 duration: 1000
@@ -107,7 +108,7 @@ Page({
         })
     },
 
-    changeInfo(e){
+    changeInfo(e) {
         const type = e.currentTarget.dataset.type;
         const newInfo = this.data.detailInfo;
         newInfo[type] = e.detail.value;
@@ -116,7 +117,7 @@ Page({
         });
 
     },
-    formSubmit(){
+    formSubmit() {
         this.setData({
             showLoading: true
         });
@@ -131,13 +132,14 @@ Page({
                     name: 'modifyInfo',
                     data: {
                         skey,
-                        nickName, 
-                        gender, 
-                        autograph, 
-                        dormitoryArea, 
-                        phoneNumber, 
+                        nickName,
+                        gender,
+                        autograph,
+                        dormitoryArea,
+                        phoneNumber,
                         weChat,
-                        avatarUrl
+                        avatarUrl,
+                        score: 3
                     },
                     success: result => {
                         app.globalData.userInfo = {
@@ -167,12 +169,12 @@ Page({
         }
     },
 
-    onClosePopup(){
+    onClosePopup() {
         this.setData({
             showPopup: false
         })
     },
-    onConfirm(event){
+    onConfirm(event) {
         const { value } = event.detail;
         const newInfo = this.data.detailInfo;
         newInfo['gender'] = value;
@@ -181,7 +183,7 @@ Page({
             showPopup: false
         })
     },
-    chooseGender(){
+    chooseGender() {
         this.setData({
             showPopup: true
         })

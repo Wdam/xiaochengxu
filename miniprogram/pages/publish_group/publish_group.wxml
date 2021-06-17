@@ -1,0 +1,112 @@
+<view>
+<view class="main">
+    <view class="title">
+        <van-cell-group>
+           <van-field
+           maxlength = '20'
+           placeholder='输入标题'
+           bind:change = "saveMessage"
+           data-type = 'goodsname'
+           error-message="{{goodsname_err}}"
+           />
+        </van-cell-group>
+      </view>
+      <view class="description">
+      <van-cell-group>
+        <van-field
+        type = 'textarea'
+        maxlength = '150'
+        placeholder='请输入描述,务必描述详细'
+        autosize
+        error-message="{{ goodsdes_err }}"
+        bind:change = 'saveMessage'
+        data-type='goodsdes'
+        ></van-field>
+      </van-cell-group>
+      </view>
+		<view class="pictures">
+			<view wx:key="{{index}}" class="img_item" wx:for="{{tempFilePaths}}">
+				<image mode="aspectFit" src="{{item}}" />
+				<van-icon bind:click="deletePic" data-index="{{index}}" name="close" />
+			</view>
+
+			<view bindtap="chooseImage" class="img_item upload-img">
+				<van-icon name="plus" />
+			</view>
+		</view>
+
+      <view class="sale_detail">
+        <van-cell-group>
+           <van-field
+              placeholder = '请设置满减，比如满200-20'
+           	  bind:change="saveMessage"
+			        data-type="discount"
+			        label="折扣："
+			        type="string"
+              
+           />
+		    <van-field
+              placeholder = '¥0.00'
+           	  bind:change="saveMessage"
+			        data-type="price"
+			        label="价格 :"
+			        type="number"
+              error-message="{{price_err}}"
+           />
+            <van-field
+              placeholder = '设置人数'
+           	  bind:change="saveMessage"
+			        data-type="pnumber"
+			        label="人数："
+			        type="number"
+              error-message="{{pnumber_err}}"
+           /> 
+           			<van-field
+			            label="联系方式 :"
+			            placeholder="请输入手机号"
+			            error-message="{{ phone_err }}"
+			            border="{{ true }}"
+			            bind:change="saveMessage"
+			            data-type="phone"
+			            type="number"
+			/>
+            <p class="lost-found-time" bindtap="toShowDatePicker">
+				<text>时间:</text>
+				<text class="holder" wx:if="{{params.d_time == ''}}">设置截止时间</text>
+				<text class="time" wx:else>{{params.d_time}}</text>
+			</p>
+  
+        <text class='fukunma'>这里粘贴付款码</text>  
+        <view class="pictures">
+			<view wx:key="{{index}}" class="img_item" wx:for="{{tempFilePaths1}}">
+               
+				<image mode="aspectFit" src="{{item}}" />
+                
+				<van-icon bind:click="deletePicqr" data-index="{{index}}" name="close" />
+			</view>
+
+			<view bindtap="chooseQRcode" class="img_item upload-img">
+				<van-icon name="plus" />
+			</view>
+		</view>
+        </van-cell-group>
+      <button bindtap="toPublish" class="publish_btn" size="large">确认发布</button>
+     
+     
+      </view>
+    	<van-popup show="{{showDatePicker}}" close-on-click-overlay="true" position="bottom" bind:close="closeDatePicker">
+		<van-datetime-picker
+			type="datetime"
+			value="{{ currentDate }}"
+			min-date="{{ minDate }}"
+			max-date="{{ maxDate }}"
+			bind:cancel="closeDatePicker"
+		  	bind:confirm="chooseDate"
+		/>
+	    </van-popup>
+
+
+
+</view>
+</view>
+  

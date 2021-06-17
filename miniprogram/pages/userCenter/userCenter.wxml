@@ -6,14 +6,14 @@
     </view>
 </veiw>
 <van-tabs active="{{ 0 }}">
-    <van-tab title="他的二手商品">
+    <van-tab title="发布的商品">
         <view wx:for="{{goods_list}}" wx:key="{{index}}" class="list_item" bindtap="tapToDetail" data-id="{{item._id}}">
             <image src="{{item.pic_url[0]}}" />
             <view class="g_center">
                 <view class="goods_msg">
-                    <text class="g_tit">{{item.title}}</text>
-                    <text class="g_desc">{{item.description}}</text>
-                    <text class="like_num">{{item.likeNum}}人喜欢</text>
+                    <text class="g_tit">{{item.goodsname}}</text>
+                    <text class="g_desc">{{item.goodsdes}}</text>
+                    <text class="like_num">{{item.pnumber}}人参与过</text>
                     <text class="pub_time">{{item.pub_time}}</text>
                 </view>
             </view>

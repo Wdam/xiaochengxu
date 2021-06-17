@@ -10,10 +10,11 @@ exports.main = async (event, context) => {
 		skey: skey
 	}).get();
 	const { openid } = userInfo.data[0];
-	const goods = await db.collection('goods').where({
+	const goods = await db.collection('goods_group').where({
 		openid: openid
 	}).get();
 
 	return goods.data;
+
 
 }

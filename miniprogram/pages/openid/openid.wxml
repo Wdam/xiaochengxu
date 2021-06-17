@@ -1,0 +1,5 @@
+<button bind:tap="getOpenid">获取openid实验</button>
+<text > {{openid}}  </text>
+
+<button bind:tap="getShouquan">授权</button>
+<button bind:tap="pushMessage">测试</button>

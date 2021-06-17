@@ -1,0 +1,17 @@
+
+.pingjia{
+    text-align: center;
+    font-size: 20px;
+    margin-left: 268rpx;
+}
+.btn{
+    margin-top: 10rpx;
+}
+.userinfo{
+    margin-left: 30rpx;
+}
+.userinfo-img{
+    width: 150rpx;
+    height: 150rpx;
+    padding-top: 20rpx;
+}

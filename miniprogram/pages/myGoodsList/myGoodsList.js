@@ -101,7 +101,7 @@ Page({
     tapToDetail(e){
         const { id, status } = e.currentTarget.dataset;
         wx.navigateTo({
-            url: `../goodsDetail/goodsDetail?id=${id}&status=${status}`
+            url: `../salesDetails/salesDetails?id=${id}&status=${status}`
         });
     },
 

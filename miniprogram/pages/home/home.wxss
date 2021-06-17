@@ -40,8 +40,41 @@
 	background-color: #249ed9;
 }
 .hot{
-	height: 240rpx;
-	padding: 20rpx;
+	height: 150rpx;
+	padding-top: 5rpx;
+	padding-bottom: 35rpx;
+	
+}
+.swiper-container{
+	
+	height: 150rpx;
+}
+.swiper-notice{
+	background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADnklEQVR4Xu1avWsUQRT/vWxIo4KiFoqgWIg2flWCglpYqIWoqKgYLPwMnvsmZxE/iqhdlMwegRAF0UIQbLSyVRC/Cv8ExV4wQe2S7JPRu7Be9m5nk7vL3u1su795895vfm929r0h5PyhnMcPR4BTQM4ZcCmQcwG4TdClgEuBnDPgUmChBcDMWwFcBnCAiD4AGNBaf7X1q1gsrgjDcExEjhLRRa31Q9uxBregClBKXQnD8A4RLas4TUT9WmttE0R/f/8WETHB74iMX661/mEzfsEIKBaLG6enp28DOB7j6LMgCE4lBcDMBwGY1V4dxRoySqXSp6TxM4TZAhuF833/PBGZ4FfVsPkmCIK99eZTSl0QkQfVGCJ6r7XemcbXlqUAM68DcAfAmQQH6xLg+/5dIroVF/zU1FTvyMjIl8wRYFYMwA0RWWvhXCwBg4OD3RMTE48A9FbbEJEXk5OTvaOjo78t7P8HaaoCmHk7gJsAjqRwbBYBZfU8AbA7JvixUqlkviJzeppGADNfLwe/KKVncQQ8BXA6xs7tIAgGU9pvrgJ8399HRGbVZ62WpaNxBIwDWBodT0SXtdZjljZrwhqqAKXUfREpztOpOAJeAdhftvsdwIUgCF7Oc56/w+dFQF9f3+Lu7u7NnudtFpETAPY0wKlZBPi+f4yIngN419XVdW14ePhjA+ZJJoCZVxFRSUSONWpCCzuJ5wALG9aQugpg5nsArllbawwwUwS8bpCs01DjCEg6CqdhMwmblAJOAS4FGvNpS1Ji9H3dPYCZzYHIFFESn56ens9DQ0O/6gHbKgWY+SSAEoCVidH/A3wjonta69Fa+HYj4DGAs5bBV2AvgyA47AiowUC7KSDfKWAWMdebYMrct4K3VQpYRZQS5AioRxgz5/4onPvf4XwXRJL2k44viSURUP1eKWXKZ1fTjqvCxxVF3wLYVcZlpygaF6jv+yeIyLTANsyRiDgCfgJYErWXybJ4xcFCobDG87y7c/hxMSbauzESXSVmPlduiNbqBMeJpDNaY5XImHmTiJiO7lHLlOic5miVGgoiMkBE/11oiCGl89rjlSCVUuvNHSAROV9HDYll8ba8IBENWCl1KAxDo4aZuz2R9519RaYSqLnwMD4+bkgYADDTQs/FJamoGgqFwjbP8y7l8pqc5VehqbB5tceb6lmLjDsCWkR0ZqdxCsjs0rTIMaeAFhGd2WmcAjK7NC1yzCmgRURndpo/QEbMUDqSobsAAAAASUVORK5CYII=');
+	background-size: 29px 29px;
+	background-repeat: no-repeat;
+	background-position: right;
+	width: 140rpx;
+}
+.gonggao{
+	width: 50rpx;
+	height: 50rpx;
+	position: relative;
+	left: -26rpx;
+	top: 14rpx;
+	
+}
+
+.swiper-item{
+	height: 80rpx;
+	width: 700rpx;
+	padding-left: 20rpx;
+	padding-top: 20rpx;
+	margin-left: 10rpx;
+	margin-top: 10rpx;
+	box-shadow: 5px 4px 8px gray;
+	border-radius: 20rpx;
+	background: #DCDCDC;
 }
 .h-tag{
 	border-bottom: 1rpx solid gray;
@@ -108,4 +141,8 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+.price{
+	position: relative;
+	top: 10px;
 }

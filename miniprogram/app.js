@@ -6,7 +6,7 @@ App({
         } else {
             wx.cloud.init({
                 traceUser: true,
-                env: 'dev-513b66'
+                env: 'yougoudemo-0ge0k7sj9e6e9e97'
             })
         }
 
@@ -26,7 +26,7 @@ App({
                     wx.authorize({
                         scope: 'scope.userInfo',
                         success() {
-                            wx.getUserInfo({
+                            wx.getUserProfile({
                                 success: res => {
                                     that.goLogin(res.userInfo)
                                 }
@@ -43,7 +43,7 @@ App({
                         that.checkLogin();
                     }else{
                         //不存在skey
-                        wx.getUserInfo({
+                        wx.getUserProfile({
                             success: res => {
                                 that.goLogin(res.userInfo)
                             }
@@ -65,7 +65,7 @@ App({
                 that.getUserInfo();
             },
             fail() {
-                wx.getUserInfo({
+                wx.getUserProfile({
                     success: res => {
                         that.goLogin(res.userInfo)
                     }
@@ -116,6 +116,7 @@ App({
         //登录
         wx.login({
             success(res) {
+                
                 if (res.code) {
                     // 调用云函数
                     wx.cloud.callFunction({
@@ -127,6 +128,7 @@ App({
                             avatarUrl,
                         },
                         success: result => {
+                           
                             console.log('登录成功,skey:', result);
                             //将skey存入storage
                             try {
@@ -146,5 +148,5 @@ App({
                 }
             }
         })
-    },
+    }
 })

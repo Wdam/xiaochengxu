@@ -1,0 +1,35 @@
+<view class="like_goods_list">
+    <view class="msg-item" wx:key="{{index}}" wx:for="{{goods_list}}">
+        <image src="{{item.userDetail.avatarUrl}}" class="userinfo-avatar mini-avatar" catchtap="tapToUserInfo" data-userid="{{item.openid}}" />
+        <view class="item_right">
+            <view class="nickName">
+                <text>{{item.userDetail.nickName}}</text>
+            </view>
+            <view class="item_title">
+                <text>{{item.goodsname}}</text>
+            </view>
+            <view class="price">
+                <text class="tag">￥</text>
+                <text>{{item.price}}</text>
+            </view>
+            <view class="pic_box">
+                <image wx:for="{{item.pic_url}}" wx:for-item="img" wx:for-index="idx" wx:key="{{index}}-{{idx}}" src="{{img}}" class="goods_pic" bindtap="tapToDetail" data-id="{{item._id}}" />
+            </view>
+            <view class="txt_box">
+                <view wx:for="{{item.index }}" wx:for-index="key" wx:for-item="value">
+                    <!-- <view  class="btnC" bind:tap="getReceive" data-id="{{item._id}}"data-index="{{index}}">点击查看状态</view> -->
+                    <view wx:if="{{goods_arr[index].receive == 0}}" class="btnC" bind:tap="Receive" data-id="{{item._id}}" data-index="{{index}}">
+                        请确认签收
+                    </view>
+                    <view wx:elif="{{goods_arr[index].receive == 1}}" class="btnC" style="background:green">
+                        已经签收
+                    </view>
+                </view>
+                <text class="pub_time">{{item.pub_time}} | {{item.alradyNum}}人参加</text>
+            </view>
+        </view>
+    </view>
+    <view class="no-likes" wx:if="{{!goods_list.length}}">
+        <text class="empty">您暂时还没有商品哟~</text>
+    </view>
+</view>

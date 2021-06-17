@@ -8,25 +8,25 @@ exports.main = async (event, context) => {
 	const { value, from } = event;
 	let list = {};
 
-	
-	if(from === 'classify'){
+
+	if (from === 'classify') {
 		// 分类查询
-		if( value == '书籍' ){
-			list = await db.collection('goods').where({
+		if (value == '书籍') {
+			list = await db.collection('goods_group').where({
 				pub_type: 1
 			}).get();
-		}else{
-			list = await db.collection('goods').where({
+		} else {
+			list = await db.collection('goods_group').where({
 				g_type: db.RegExp({
 					regexp: value,
 					options: 'g',
 				})
 			}).get();
 		}
-	}else{
+	} else {
 		// 搜索
-		list = await db.collection('goods').where({
-			title: db.RegExp({
+		list = await db.collection('goods_group').where({
+			goodsname: db.RegExp({
 				regexp: value,
 				options: 'g',
 			})

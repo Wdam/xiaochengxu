@@ -1,0 +1,46 @@
+<!--miniprogram/pages/salesDetails/salesDetails.wxml-->
+<view >
+    <view class="top">
+        <text class="namelist">购买名单</text>
+        <text class="status">发货状态</text>
+    </view>
+    <view wx:if="{{!isJoiner}}"><text >暂无数据</text></view>
+    <view wx:else>
+        <view
+        wx:for="{{joiner}}" 
+        wx:for-index="key"
+        wx:for-item="value"
+        
+        >
+               
+                <view class="userinfo">
+                <image class="userinfo-avatar mini-avatar" src="{{value.avatarUrl}}" />
+                <text class="nickname">{{value.nickName}}</text>
+                <text class="dormitoryArea" >{{value.dormitoryArea}}</text>
+                <image class="evid" src="{{value.Evidimg}}"bind:tap="clickImg" data-url="{{value.Evidimg}}"/>
+                <text class="liuyan">留言内容：{{value.text}}</text>
+                <text class="buynum">购买数量{{value.num}}</text>
+
+                  
+                <view wx:if="{{value.post==0}}"  class="btnsP" bind:tap="Post" data-openid="{{value.openid}}" data-index="{{key}}">
+					发货
+                </view>
+                <view wx:else  class="btnsPd" bind:tap="" data-openid="{{value.openid}}" data-index="{{key}}" >
+					已发货
+                </view>
+
+                <view class="btnsR" bind:tap="Remove" data-openid="{{value.openid}}">
+					移除
+                </view>
+                           
+           
+            </view>
+              
+            
+        </view>
+     </view>
+       
+    
+    
+  
+</view>

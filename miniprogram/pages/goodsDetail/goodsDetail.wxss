@@ -1,3 +1,5 @@
+@import '../../utils/utils.wxss';
+
 page{
 	background-color: #f7f6e5;
 }
@@ -48,9 +50,9 @@ page{
 	white-space: nowrap;
 	color: #ad8b0b;
 	font-size: 32rpx;
-	padding: 20rpx;
+	padding: 10rpx;
 }
-.t_type{
+.t_Score{
 	font-size: 26rpx;
 	padding-left: 20rpx;
 	padding-bottom: 20rpx;
@@ -88,8 +90,9 @@ page{
 	line-height:46rpx;
 }
 .pricein{
-	font-size:24rpx;
-	text-decoration:line-through;
+	font-size:30rpx;
+	color: #f56538;
+	
 }
 .foo{
 	height: 140rpx;
@@ -147,4 +150,76 @@ page{
 	position: fixed;
 	bottom : 70rpx;
 	height: 2rpx;
+}
+.isend{
+	color: aliceblue;
+}
+.course-countdown{
+	margin-top: 20rpx;
+	margin-left: 95rpx;
+	border: 1rpx solid red;
+	background-color: seashell;
+	width: 600rpx;
+	height: 118rpx;
+	border-radius: 15rpx;
+	text-align: center;
+	padding-top: 15rpx;
+	padding-bottom: auto;
+	
+}
+.fs-28{
+	margin: 0 auto;
+	line-height: 58rpx;
+}
+.fs-29{
+	margin: 0 auto;
+	line-height: 105rpx;
+}
+.pictures{
+	display: flex;
+	flex-direction: row;
+	flex-wrap:wrap;
+}
+.van-icon-plus{
+	position: absolute !important;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+.upload-img{
+	font-size: 100rpx;
+	color: gray;
+	position: relative;
+	/*bottom: 25rpx;
+	left: 30rpx;*/
+}
+.pictures{
+	display: flex;
+	flex-direction: row;
+	flex-wrap:wrap;
+}
+.img_item{
+	position: relative;
+	background-color: #eee;
+	width: 150rpx;
+	height: 150rpx;
+	border-radius: 8rpx;
+	margin-left: 30rpx;
+	margin-top: 30rpx;
+}
+.img_item .van-icon-close{
+	position: absolute;
+	top:-10rpx;
+	right:-10rpx;
+	color:red;
+}
+.img_item image{
+	width: 150rpx;
+	height: 150rpx;
+	border-radius: 8rpx;
+}
+.hezi{
+	width: 100rpx;
+	height: 138rpx;
+	border: 1rpx solid red;
 }

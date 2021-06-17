@@ -8,10 +8,10 @@ const db = cloud.database()
 exports.main = async (event, context) => {
 	const wxContext = cloud.getWXContext();
 	const { goods_id } = event;
-	const goods_item = await db.collection('goods').doc(goods_id).get();
+	const goods_item = await db.collection('goods_group').doc(goods_id).get();
 	await db.collection('unsale-goods').add({
 		data: goods_item.data
 	});
-	const res = await db.collection('goods').doc(goods_id).remove();
+	const res = await db.collection('goods_group').doc(goods_id).remove();
 	return res;
 }

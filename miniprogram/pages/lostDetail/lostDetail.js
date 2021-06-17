@@ -38,7 +38,7 @@ Page({
         })
     },
 
-    makePhoneCall(){
+    makePhoneCall() {
         wx.makePhoneCall({
             phoneNumber: this.data.detail.phone
         })

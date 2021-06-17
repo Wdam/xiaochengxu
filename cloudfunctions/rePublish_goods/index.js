@@ -13,7 +13,7 @@ exports.main = async (event, context) => {
 	await db.collection('unsale-goods').doc(goods_id).remove();
 	const pub_time = sd.format(new Date(), 'YYYY-MM-DD HH:mm:ss');
 	goods.data.pub_time = pub_time;
-	const rePub = await db.collection('goods').add({
+	const rePub = await db.collection('goods_group').add({
 		data: goods.data
 	});
 

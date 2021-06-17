@@ -1,0 +1,13 @@
+.van-button--default{
+	color: #a0a0a0 !important;
+	border: solid 1px #a0a0a0 !important;
+	background-color: white !important;
+}
+.van-button{
+	display: block !important;
+	margin-top: 15rpx;
+}
+.p_tag{
+	font-size: 24rpx;
+}
+

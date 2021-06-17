@@ -7,7 +7,7 @@ Page({
     data: {
         columns: [],
         bookType: ['教科书', '辅导资料', '小说', '文学', '历史', '哲学', '艺术', '散文', '其他'],
-        goodsType:['数码', '电器', '校园代步', '运动健身', '服饰', '美妆', '电脑', '数码配件', '其他'],
+        goodsType: ['数码', '电器', '校园代步', '运动健身', '服饰', '美妆', '电脑', '数码配件', '其他'],
         showPopup: false,
         params: {
             g_type: '',
@@ -25,20 +25,20 @@ Page({
         price_err: '',
         descrip_err: '',
         title_err: ''
-     
+
     },
-    onLoad(option){
+    onLoad(option) {
         let { pub_type } = option;
         const { goodsType, bookType, params } = this.data;
         pub_type = parseInt(pub_type, 10);
         params['pub_type'] = pub_type;
-        console.log(pub_type===1);
-        if(pub_type){
+        console.log(pub_type === 1);
+        if (pub_type) {
             this.setData({
                 params,
                 columns: bookType
             })
-        }else{
+        } else {
             this.setData({
                 params,
                 columns: goodsType
@@ -46,19 +46,19 @@ Page({
         }
     },
 
-    onClosePopup(){
+    onClosePopup() {
         this.setData({
             showPopup: false
         })
     },
 
-    tapToShow(){
+    tapToShow() {
         this.setData({
             showPopup: true
         })
     },
-    
-    onConfirm(event){
+
+    onConfirm(event) {
         const { value } = event.detail;
         const { params } = this.data;
         params['g_type'] = value;
@@ -69,9 +69,9 @@ Page({
         })
     },
 
-    saveMessage(e){
+    saveMessage(e) {
         console.log(e);
-        const {type} = e.currentTarget.dataset;
+        const { type } = e.currentTarget.dataset;
         const { params } = this.data;
         params[type] = e.detail;
         this.setData({
@@ -83,11 +83,11 @@ Page({
         })
     },
 
-    deletePic(e){
+    deletePic(e) {
         console.log(e);
-        const {index} = e.currentTarget.dataset;
-        const {tempFilePaths} = this.data;
-        tempFilePaths.splice(index,1);
+        const { index } = e.currentTarget.dataset;
+        const { tempFilePaths } = this.data;
+        tempFilePaths.splice(index, 1);
         this.setData({
             tempFilePaths
         })
@@ -97,8 +97,8 @@ Page({
     doUpload(filePath) {
         const that = this;
         const arr = filePath.split('/');
-        const name = arr[arr.length-1];
-         // 上传图片
+        const name = arr[arr.length - 1];
+        // 上传图片
         // const cloudPath = 'goods-pic/my-image' + filePath.match(/\.[^.]+?$/)[0];
         const cloudPath = 'goods-pic/' + name;
 
@@ -116,7 +116,7 @@ Page({
             });
         }).catch(error => {
             console.error('[上传文件] 失败：', error);
-             wx.showToast({
+            wx.showToast({
                 icon: 'none',
                 title: '上传失败',
                 duration: 1000
@@ -126,10 +126,10 @@ Page({
     },
 
 
-    
+
     chooseImage: function () {
         const that = this;
-    // 选择图片
+        // 选择图片
         wx.chooseImage({
             count: 3,
             sizeType: ['compressed'],
@@ -140,10 +140,10 @@ Page({
                 filePath.forEach((path, index) => {
                     that.doUpload(path);
                 });
-                const {tempFilePaths} = that.data;
+                const { tempFilePaths } = that.data;
                 that.setData({
                     tempFilePaths: tempFilePaths.concat(filePath)
-                },()=>{
+                }, () => {
                     console.log(that.data.tempFilePaths)
                 })
             },
@@ -153,7 +153,7 @@ Page({
         })
     },
 
-    checkParams(params){
+    checkParams(params) {
         const { g_type, title, description, price, phone, pub_type } = params;
         let temp = 1;
         //判断手机号格式是否正确
@@ -163,7 +163,7 @@ Page({
                 phone_err: '请输入手机号'
             })
             temp = 0;
-        } else if ( ! valid_rule.test(phone)) {
+        } else if (!valid_rule.test(phone)) {
             this.setData({
                 phone_err: '手机号格式错误'
             });
@@ -172,12 +172,12 @@ Page({
 
         //判断商品类型是否为空
         let msg = ''
-        if(pub_type === 0){
+        if (pub_type === 0) {
             msg = '请选择商品类型';
-        }else if(pub_type === 1){
+        } else if (pub_type === 1) {
             msg = '请选择书籍类型';
         }
-        if ( ! g_type ){
+        if (!g_type) {
             wx.showToast({
                 title: msg,
                 icon: 'none',
@@ -187,7 +187,7 @@ Page({
         }
 
         //判断描述是否为空
-        if(!description){
+        if (!description) {
             this.setData({
                 descrip_err: '请填写描述信息'
             });
@@ -195,7 +195,7 @@ Page({
         }
 
         //判断标题是否为空
-        if(!title){
+        if (!title) {
             this.setData({
                 title_err: '请填写标题'
             });
@@ -203,7 +203,7 @@ Page({
         }
 
         //判断价格是否为空
-        if(!price){
+        if (!price) {
             this.setData({
                 price_err: '请填写价格'
             });
@@ -214,15 +214,15 @@ Page({
 
     },
 
-    timeConvert(time){
+    timeConvert(time) {
         const changeTime = num => {
-            if(num<10){
+            if (num < 10) {
                 num = `0${num}`;
             }
             return num;
         }
         const y = time.getFullYear();
-        let m = time.getMonth()+1;
+        let m = time.getMonth() + 1;
         let d = time.getDate();
         let h = time.getHours();
         let mm = time.getMinutes();
@@ -235,12 +235,12 @@ Page({
         return `${y}-${m}-${d} ${h}:${mm}:${s}`;
     },
 
-    toPublish(){
+    toPublish() {
         const { params } = this.data;
 
         //发布前校验
         const temp = this.checkParams(params);
-        if(temp){
+        if (temp) {
             wx.showLoading({
                 title: '发布中',
             });

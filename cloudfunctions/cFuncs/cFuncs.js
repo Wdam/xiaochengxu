@@ -9,7 +9,7 @@ const cFuncs = {
     deleteGoods: (event, db) => {
         const { goods_id, status } = event;
         if(status == 1){
-            return db.collection('goods').doc(goods_id).remove();
+            return db.collection('goods_group').doc(goods_id).remove();
         }else if(status == 0){
             return db.collection('unsale-goods').doc(goods_id).remove();
         }
@@ -36,7 +36,7 @@ const cFuncs = {
         }).field({
             detailInfo: true
         }).get();
-        const getGoods = () => db.collection('goods').where({
+        const getGoods = () => db.collection('goods_group').where({
             openid: userId
         }).get();
         const getLost = () => db.collection('lost-and-found').where({

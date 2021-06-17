@@ -1,64 +1,97 @@
 <view>
-	<swiper
-		class="detail_swiper"
-	    autoplay="true"
-	    interval="3000"
-	    duration="500"
-	    indicator-dots="true"
-    >
-        <block wx:for="{{good_imgs}}" wx:key="{{index}}">
-            <swiper-item>
-                <image src="{{item}}" mode="aspectFill" class="slide-image" />
-            </swiper-item>
-        </block>
-    </swiper>
+				<swiper class="detail_swiper" autoplay="true" interval="3000" duration="500" indicator-dots="true">
+								<block wx:for="{{good_imgs}}" wx:key="{{index}}">
+												<swiper-item>
+																<image src="{{item}}" mode="aspectFill" class="slide-image" bind:longpress="previewImage" show-menu-by-longpress="true" />
+												</swiper-item>
+								</block>
+				</swiper>
+				<view class="t_box">
+								<view class="t_left">
+												<text class="t_title">{{detail.goodsname}}</text>
+												<text class="pricein"></text>
+												<view class="t_Score">
+																<text>
+																				Ta的交易评分是：
+																				<block wx:if="{{score>10}}">{{score}}分，放心交易</block>
+																				<block wx:if="{{score>= 8 && score<=10}}">{{score}}分，很好</block>
+																				<block wx:if="{{score >=5 && score <8}}">{{score}}分，还不错</block>
+																				<block wx:if="{{score >=1 && score <5}}">{{score}}分，一般</block>
+																				<block wx:if="{{score<=0 }}">{{score}}分，有点差</block>
+																				<block wx:if="{{score <-5}}">{{score}}分，小心交易</block>
+																</text>
+												</view>
+								</view>
+								<view wx:if="{{status == 1}}" class="t_price">
+												<text>￥{{detail.price}}</text>
+												<!-- <text class="pricein">入手价：￥{{detail.pricein}}</text> -->
+								</view>
+								<view class="t_price" wx:if="{{status == 0}}">
+												<text>商品已下架</text>
+								</view>
+				</view>
+				<view class="avater">
+								<image src="{{detail.userDetail.avatarUrl}}" class="userinfo-avatar mini-avatar" />
+								<text>{{detail.userDetail.nickName}}</text>
+				</view>
+				<view class="goods_des">
+								<view class="laba">
+												<text class="iconfont icon-trumpetlaba"></text>
+								</view>
+								<view class="des">
+												<text>{{detail.goodsdes}}</text>
+												<text>本商品{{detail.discount}}</text>
 
-    <view class="t_box">
-    	<view class="t_left">
-    		<text class="t_title">{{detail.title}}</text>
-    		<view class="t_type">
-    			<text>类型标签：<text>{{detail.g_type}}</text></text>
-    			<van-tag wx:if="{{detail.isNew}}" plain type="success">全新宝贝</van-tag>
-    		</view>
-    	</view>
-    	<view wx:if="{{status == 1}}" class="t_price">
-    		<text>￥{{detail.price}}</text>
-    		<text class="pricein">入手价：￥{{detail.pricein}}</text>
-    	</view>
-    	<view class="t_price" wx:if="{{status == 0}}">
-    		<text>商品已下架</text>
-    	</view>
-    </view>
-
-	<view class="avater">
-		<image src="{{detail.userDetail.avatarUrl}}" class="userinfo-avatar mini-avatar" />
-		<text>{{detail.userDetail.nickName}}</text>
-	</view>
-	<view class="goods_des">
-		<view class="laba">
-			<text class="iconfont icon-trumpetlaba"></text>
-		</view>
-		<view class="des">
-			<text>{{detail.description}}</text>
-		</view>
-	</view>
-
-	<view class="foo">
-		<view>
-			<button open-type="share" class="share">
-				<text class="iconfont icon-fenxiang"></text>
-			</button>
-		</view>
-		<view bindtap="makePhoneCall" class="call">
-			<text>联系卖家</text>
-		</view>
-		<view class="like" bindtap="modifyLikeGoods">
-			<van-icon wx:if="{{!isLike}}" name="like-o" color="white" />
-			<van-icon wx:if="{{isLike}}" name="like" color="red" />
-		</view>
-		<view class="line"></view>
-	</view>
-
-	<van-dialog id="van-dialog" />
-
+								</view>
+				</view>
+				<view class="course-countdown">
+								<block wx:if="{{remainTime>0}}">
+												<text class='block fs-28'>距活动结束:</text>
+												<view class="countdown-result fs-24 mt-5">
+																<text>{{countDownTxt.day}}</text>
+																天
+																<text>{{countDownTxt.hou}}</text>
+																时
+																<text>{{countDownTxt.min}}</text>
+																分
+																<text>{{countDownTxt.sec}}</text>
+																秒
+												</view>
+								</block>
+								<block wx:else>
+												<text class="fs-29">该活动已结束</text>
+								</block>
+				</view>
+				<view class="foo">
+								<block wx:if="{{remainTime>0}}">
+												<view>
+																<button open-type="share" class="share">
+																				<text class="iconfont icon-fenxiang"></text>
+																</button>
+												</view>
+												<view>
+																<button open-type="contact" class="share">
+																				<text class="iconfont icon-kefu"></text>
+																</button>
+												</view>
+												<view bindtap="makePhoneCall" class="call">
+																<text>联系卖家</text>
+												</view>
+												<view class="like" bindtap="modifyLikeGoods">
+																<text wx:if="{{!isJoined}}" class="iconfont icon-jiaru" style="color:white"></text>
+																<text wx:if="{{isJoined}}" class="iconfont icon-jiaru" style="color:red"></text>
+												</view>
+												<view class="like" bindtap="modifyLikeGood" bind:longpress="Navigator">
+																<text wx:if="{{!isLike}}" class="iconfont icon-che-copy" style="color:white"></text>
+																<text wx:if="{{isLike}}" class="iconfont icon-che-copy" style="color:red"></text>
+																<!-- <van-icon wx:if="{{!isLike}}" name="like-o" color="white" />
+																<van-icon wx:if="{{isLike}}" name="like" color="red" /> -->
+												</view>
+												<view class="line"></view>
+								</block>
+								<block wx:else>
+												<view class="isend">活动已经结束了</view>
+								</block>
+				</view>
+				<van-dialog id="van-dialog" />
 </view>

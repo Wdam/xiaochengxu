@@ -8,13 +8,13 @@ const db = cloud.database()
 exports.main = async (event, context) => {
 	const { skey } = event;
 	const result = await db.collection('userInfo').where({
-    		skey: skey
-    	}).get();
+		skey: skey
+	}).get();
 	let res = {
 		suc: false,
 		info: '您未登录或登录已过期'
 	};
-	if(result.data.length){
+	if (result.data.length) {
 		const g_map = {
 			1: '男',
 			2: '女'
@@ -28,5 +28,5 @@ exports.main = async (event, context) => {
 	}
 
 	return res;
-	
+
 }

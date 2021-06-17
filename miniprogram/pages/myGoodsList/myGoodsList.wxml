@@ -5,10 +5,11 @@
 				<image src="{{item.pic_url[0]}}" />
 				<view class="g_center">
 					<view class="goods_msg">
-						<text class="g_tit">{{item.title}}</text>
-						<text class="g_desc">{{item.description}}</text>
-						<text class="like_num">{{item.likeNum}}人喜欢</text>
+						<text class="g_tit">{{item.goodsname}}</text>
+						<text class="g_desc">{{item.goodsdes}}</text>
+						<text class="like_num">{{item.alradyNum}}人拼过</text>
 						<text class="pub_time">{{item.pub_time}}</text>
+						<!-- <text >{{item.index}} </text> -->
 					</view>
 				</view>
 				<view class="g_right">
@@ -31,9 +32,9 @@
 				<image src="{{item.pic_url[0]}}" />
 				<view class="g_center">
 					<view class="goods_msg">
-						<text class="g_tit">{{item.title}}</text>
-						<text class="g_desc">{{item.description}}</text>
-						<text class="like_num">{{item.likeNum}}人喜欢</text>
+						<text class="g_tit">{{item.goodsname}}</text>
+						<text class="g_desc">{{item.goodsdes}}</text>
+						<text class="like_num">{{item.alradyNum}}人参与</text>
 						<text class="pub_time">{{item.pub_time}}</text>
 					</view>
 				</view>

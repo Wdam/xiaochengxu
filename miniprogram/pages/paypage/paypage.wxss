@@ -1,0 +1,50 @@
+.qrimg{
+    height: 240rpx;
+    width: 100%;
+}
+.pictures{
+	display: flex;
+	flex-direction: row;
+	flex-wrap:wrap;
+}
+.van-icon-plus{
+	position: absolute !important;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+.liuyan{
+	border: 2px solid rgba(14, 1, 1, 0.575) ;
+}
+.upload-img{
+	font-size: 100rpx;
+	color: gray;
+	position: relative;
+	/*bottom: 25rpx;
+	left: 30rpx;*/
+}
+.pictures{
+	display: flex;
+	flex-direction: row;
+	flex-wrap:wrap;
+}
+.img_item{
+	position: relative;
+	background-color: #eee;
+	width: 150rpx;
+	height: 150rpx;
+	border-radius: 8rpx;
+	margin-left: 30rpx;
+	margin-top: 30rpx;
+}
+.img_item .van-icon-close{
+	position: absolute;
+	top:-10rpx;
+	right:-10rpx;
+	color:red;
+}
+.img_item image{
+	width: 150rpx;
+	height: 150rpx;
+	border-radius: 8rpx;
+}

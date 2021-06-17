@@ -28,23 +28,23 @@ Page({
         currentDate: new Date().getTime(),
         showDatePicker: false,
         f_time: ''
-      
+
     },
 
-    closeDatePicker(){
+    closeDatePicker() {
         this.setData({
             showDatePicker: false
         })
     },
-    toShowDatePicker(){
+    toShowDatePicker() {
         this.setData({
             showDatePicker: true
         })
     },
 
 
-    chooseDate(e){
-        const {params} = this.data;
+    chooseDate(e) {
+        const { params } = this.data;
         params['f_time'] = this.timeConvert(new Date(e.detail));
         this.setData({
             currentDate: e.detail,
@@ -53,15 +53,15 @@ Page({
         })
     },
 
-    timeConvert(time){
+    timeConvert(time) {
         const changeTime = num => {
-            if(num<10){
+            if (num < 10) {
                 num = `0${num}`;
             }
             return num;
         }
         const y = time.getFullYear();
-        let m = time.getMonth()+1;
+        let m = time.getMonth() + 1;
         let d = time.getDate();
         let h = time.getHours();
         let mm = time.getMinutes();
@@ -74,11 +74,11 @@ Page({
         return `${y}-${m}-${d} ${h}:${mm}:${s}`;
     },
 
-    deletePic(e){
+    deletePic(e) {
         console.log(e);
-        const {index} = e.currentTarget.dataset;
-        const {tempFilePaths} = this.data;
-        tempFilePaths.splice(index,1);
+        const { index } = e.currentTarget.dataset;
+        const { tempFilePaths } = this.data;
+        tempFilePaths.splice(index, 1);
         this.setData({
             tempFilePaths
         })
@@ -88,8 +88,8 @@ Page({
     doUpload(filePath) {
         const that = this;
         const arr = filePath.split('/');
-        const name = arr[arr.length-1];
-         // 上传图片
+        const name = arr[arr.length - 1];
+        // 上传图片
         // const cloudPath = 'goods-pic/my-image' + filePath.match(/\.[^.]+?$/)[0];
         const cloudPath = 'lost-and-found/' + name;
 
@@ -107,7 +107,7 @@ Page({
             });
         }).catch(error => {
             console.error('[上传文件] 失败：', error);
-             wx.showToast({
+            wx.showToast({
                 icon: 'none',
                 title: '上传失败',
                 duration: 1000
@@ -117,10 +117,10 @@ Page({
     },
 
 
-    
+
     chooseImage: function () {
         const that = this;
-    // 选择图片
+        // 选择图片
         wx.chooseImage({
             count: 3,
             sizeType: ['compressed'],
@@ -131,10 +131,10 @@ Page({
                 filePath.forEach((path, index) => {
                     that.doUpload(path);
                 });
-                const {tempFilePaths} = that.data;
+                const { tempFilePaths } = that.data;
                 that.setData({
                     tempFilePaths: tempFilePaths.concat(filePath)
-                },()=>{
+                }, () => {
                     console.log(that.data.tempFilePaths)
                 })
             },
@@ -144,19 +144,19 @@ Page({
         })
     },
 
-    onClosePopup(){
+    onClosePopup() {
         this.setData({
             showPopup: false
         })
     },
 
-    tapToShow(){
+    tapToShow() {
         this.setData({
             showPopup: true
         })
     },
 
-    onConfirm(event){
+    onConfirm(event) {
         const { value, index } = event.detail;
         const { params } = this.data;
         params['type'] = value;
@@ -168,9 +168,9 @@ Page({
         })
     },
 
-    saveMessage(e){
+    saveMessage(e) {
         console.log(e);
-        const {type} = e.currentTarget.dataset;
+        const { type } = e.currentTarget.dataset;
         const { params } = this.data;
         params[type] = e.detail;
         this.setData({
@@ -183,7 +183,7 @@ Page({
         })
     },
 
-    checkParams(params){
+    checkParams(params) {
         const { type, title, description, phone, address, f_time } = params;
         let temp = 1;
         //判断手机号格式是否正确
@@ -193,7 +193,7 @@ Page({
                 phone_err: '请输入手机号'
             })
             temp = 0;
-        } else if ( ! valid_rule.test(phone)) {
+        } else if (!valid_rule.test(phone)) {
             this.setData({
                 phone_err: '手机号格式错误'
             });
@@ -202,8 +202,8 @@ Page({
 
         //判断发布类型是否为空
         const msg = '请选择发布类型'
-       
-        if ( ! type ){
+
+        if (!type) {
             wx.showToast({
                 title: msg,
                 icon: 'none',
@@ -213,7 +213,7 @@ Page({
         }
 
         //判断描述是否为空
-        if(!description){
+        if (!description) {
             this.setData({
                 descrip_err: '请填写描述信息'
             });
@@ -221,7 +221,7 @@ Page({
         }
 
         //判断标题是否为空
-        if(!title){
+        if (!title) {
             this.setData({
                 title_err: '请填写标题'
             });
@@ -229,7 +229,7 @@ Page({
         }
 
         //判断地址是否为空
-        if(!address){
+        if (!address) {
             this.setData({
                 address_err: '请填写地址'
             });
@@ -237,7 +237,7 @@ Page({
         }
 
         //判断时间是否为空
-        if(!f_time){
+        if (!f_time) {
             this.setData({
                 time_err: '请填写时间'
             });
@@ -248,12 +248,12 @@ Page({
 
     },
 
-    toPublish(){
+    toPublish() {
         const { params } = this.data;
 
         //发布前校验
         const temp = this.checkParams(params);
-        if(temp){
+        if (temp) {
             wx.showLoading({
                 title: '发布中',
             });

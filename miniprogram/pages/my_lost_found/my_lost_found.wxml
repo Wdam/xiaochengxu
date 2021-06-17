@@ -1,6 +1,6 @@
 <view>
 	<van-tabs active="{{ active }}">
-		<van-tab title="寻物启士">
+		<van-tab title="寻物启事">
 			<view wx:if="{{lost_list.length}}" bindtap="tapToLostDetail" data-id="{{item._id}}" class="msg-item" wx:key="{{item._id}}" wx:for="{{lost_list}}">
 		        <image 
 		            src="{{item.userDetail.avatarUrl}}" 
